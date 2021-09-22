@@ -97,7 +97,7 @@ function engineerQuestions() {
             }
         ])
         .then(function(data) {
-           const engineer = new Engineer(data.name, data.id, data.email, github);
+           const engineer = new Engineer(data.name, data.id, data.email, data.github);
            team.push(engineer);
            if(data.confirmAdd) {
                chooseEmployee();

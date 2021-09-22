@@ -36,7 +36,7 @@ function questions() {
             }
         ])
         .then(function(data) {
-           const manager = new Manager(data.name, data.id, data.email);
+           const manager = new Manager(data.name, data.id, data.email, data.office);
            team.push(manager);
            if(data.confirmAdd) {
                chooseEmployee();
@@ -99,7 +99,7 @@ function engineerQuestions() {
         .then(function(data) {
            const employee = new Employee(data.name, data.id, data.email);
            TODO://add parameter for github and change to engineer
-           team.push(employee);
+           team.push(manager);
            if(data.confirmAdd) {
                chooseEmployee();
            } else {

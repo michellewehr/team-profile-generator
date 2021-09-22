@@ -24,15 +24,22 @@ function questions() {
             name: 'email',
             message: "What is your team members's email address?"
             },
+            {
+                type: 'confirm',
+                name: 'confirmAdd',
+                message: 'Would you like to add another team member?'
+            }
         ])
         .then(function(data) {
            const employee = new Employee(data.name, data.id, data.email);
            team.push(employee);
-           return team;
+           if(data.confirmAdd) {
+               questions();
+           } else {
+              console.log(team);
+           }
         })
-        .then(function(team) {
-            console.log(team);
-        })
+        
 }
 
 function confirmAdd(managerData) {

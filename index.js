@@ -21,12 +21,12 @@ function getManager() {
             },
             {
             type: 'text',
-            name: 'office-number',
+            name: 'office',
             message: "What is your manager's office number?"
             }
         ])
-        .then((managerData) => {
-            confirmAdd(managerData)
+        .then(managerInfo => {
+            console.log(new Manager(managerInfo))
         })
 }
 
@@ -46,9 +46,5 @@ function confirmAdd(managerData) {
     })
 }
 
-getManager()
-    .then(data => {
-        Manager(data);
-    })
+getManager();
 
-mod

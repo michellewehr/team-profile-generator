@@ -1,6 +1,6 @@
-const { template } = require('@babel/core');
 const inquirer = require('inquirer');
 const Employee = require('./lib/Employee');
+const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 
 const team = [];
@@ -97,9 +97,8 @@ function engineerQuestions() {
             }
         ])
         .then(function(data) {
-           const employee = new Employee(data.name, data.id, data.email);
-           TODO://add parameter for github and change to engineer
-           team.push(manager);
+           const engineer = new Engineer(data.name, data.id, data.email, github);
+           team.push(engineer);
            if(data.confirmAdd) {
                chooseEmployee();
            } else {

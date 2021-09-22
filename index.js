@@ -5,14 +5,14 @@ const Manager = require('./lib/Manager');
 
 const team = [];
 
-//prompt questions about employee
+//prompt questions about manager 
 function questions() {
     return inquirer  
         .prompt([
             {
             type: 'text',
             name: 'name',
-            message: "What is your team members's name?"
+            message: "What is your team manager's name?"
             },
             {
             type: 'text',
@@ -22,7 +22,12 @@ function questions() {
             {
             type: 'text',
             name: 'email',
-            message: "What is your team members's email address?"
+            message: "What is your team manager's email address?"
+            },
+            {
+            type: 'text',
+            name: 'office',
+            message: "What is your manager's office number?"
             },
             {
                 type: 'confirm',
@@ -31,10 +36,10 @@ function questions() {
             }
         ])
         .then(function(data) {
-           const employee = new Employee(data.name, data.id, data.email);
-           team.push(employee);
+           const manager = new Manager(data.name, data.id, data.email);
+           team.push(manager);
            if(data.confirmAdd) {
-               questions();
+               chooseEmployee();
            } else {
               console.log(team);
            }
@@ -42,20 +47,108 @@ function questions() {
         
 }
 
-function confirmAdd(managerData) {
-    inquirer
-    .prompt({
-        type: 'confirm',
-        name: 'confirmAdd',
-        message: "Would you like to add another team member to your team's profile?"
-    })
-    .then(confirmData => {
-        if (confirmData.confirmAdd) {
-            console.log('need addMember function to run here');
-        } else {
-            return managerData;
+// choose employee to add. gets ran if user selects add another employee
+function chooseEmployee() {
+    return inquirer
+    .prompt(
+        {
+            type: 'checkbox',
+            name: 'typeEmployee',
+            choices: ['Engineer', 'Intern']
+        }
+    )
+    .then(data => {
+        if(data.typeEmployee = 'Engineer') {
+            engineerQuestions();
         }
     })
+}
+
+
+//prompt questions about engineer
+function engineerQuestions() {
+    return inquirer  
+        .prompt([
+            {
+            type: 'text',
+            name: 'name',
+            message: "What is your employee's name?"
+            },
+            {
+            type: 'text',
+            name: 'id',
+            message: "What is your employee's employee ID?"
+            },
+            {
+            type: 'text',
+            name: 'email',
+            message: "What is your employee's email address?"
+            },
+            {
+            type: 'text',
+            name: 'github',
+            message: "What is your employee's GitHub?"
+            },
+            {
+            type: 'confirm',
+            name: 'confirmAdd',
+            message: 'Would you like to add another team member?',
+            default: false
+            }
+        ])
+        .then(function(data) {
+           const employee = new Employee(data.name, data.id, data.email);
+           TODO://add parameter for github and change to engineer
+           team.push(employee);
+           if(data.confirmAdd) {
+               chooseEmployee();
+           } else {
+              console.log(team);
+           }
+        })
+}
+
+//prompt questions about intern
+function internQuestions() {
+    return inquirer  
+        .prompt([
+            {
+            type: 'text',
+            name: 'name',
+            message: "What is your intern's name?"
+            },
+            {
+            type: 'text',
+            name: 'id',
+            message: "What is your intern's ID?"
+            },
+            {
+            type: 'text',
+            name: 'email',
+            message: "What is your intern's email address?"
+            },
+            {
+            type: 'text',
+            name: 'school',
+            message: "What is your intern's school?"
+            },
+            {
+            type: 'confirm',
+            name: 'confirmAdd',
+            message: 'Would you like to add another team member?',
+            default: false
+            }
+        ])
+        .then(function(data) {
+           const employee = new Employee(data.name, data.id, data.email);
+           // TODO: add parametr for data.school and change employee to intern
+           team.push(employee);
+           if(data.confirmAdd) {
+               chooseEmployee();
+           } else {
+              console.log(team);
+           }
+        })
 }
 
 questions();

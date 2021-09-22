@@ -45,7 +45,6 @@ function managerQuestions() {
               console.log(team);
            }
         })
-        
 }
 
 // choose employee to add. gets ran if user selects add another employee
@@ -55,18 +54,16 @@ function chooseEmployee() {
         {
             type: 'list',
             name: 'typeEmployee',
-            choices: ['Engineer', 'Intern', 'Manager']
+            choices: ['Engineer', 'Intern']
         }
     )
     .then(function(data) {
         if(data.typeEmployee === 'Engineer') {
             console.log('hi');
             engineerQuestions();
-        } else if(data.typeEmployee === 'Intern') {
-            internQuestions();
         } else {
-            managerQuestions();
-        }
+            internQuestions();
+        } 
     })
 }
 

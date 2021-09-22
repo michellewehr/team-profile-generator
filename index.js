@@ -2,6 +2,7 @@ const inquirer = require('inquirer');
 const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
+const Intern = require('./lib/Intern')
 
 const team = [];
 
@@ -60,6 +61,10 @@ function chooseEmployee() {
     .then(data => {
         if(data.typeEmployee = 'Engineer') {
             engineerQuestions();
+        } else if(data.typeEmployee = 'Intern') {
+            internQuestions();
+        } else {
+            return;
         }
     })
 }
@@ -139,9 +144,8 @@ function internQuestions() {
             }
         ])
         .then(function(data) {
-           const employee = new Employee(data.name, data.id, data.email);
-           // TODO: add parametr for data.school and change employee to intern
-           team.push(employee);
+           const intern = new Intern(data.name, data.id, data.email, data.school);
+           team.push(intern);
            if(data.confirmAdd) {
                chooseEmployee();
            } else {

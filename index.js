@@ -7,7 +7,7 @@ const Intern = require('./lib/Intern')
 const team = [];
 
 //prompt questions about manager 
-function questions() {
+function managerQuestions() {
     return inquirer  
         .prompt([
             {
@@ -18,7 +18,7 @@ function questions() {
             {
             type: 'text',
             name: 'id',
-            message: "What is your team member's employee ID?"
+            message: "What is your team manager's employee ID?"
             },
             {
             type: 'text',
@@ -28,7 +28,7 @@ function questions() {
             {
             type: 'text',
             name: 'office',
-            message: "What is your manager's office number?"
+            message: "What is your team manager's office number?"
             },
             {
                 type: 'confirm',
@@ -53,18 +53,19 @@ function chooseEmployee() {
     return inquirer
     .prompt(
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'typeEmployee',
-            choices: ['Engineer', 'Intern']
+            choices: ['Engineer', 'Intern', 'Manager']
         }
     )
-    .then(data => {
-        if(data.typeEmployee = 'Engineer') {
+    .then(function(data) {
+        if(data.typeEmployee === 'Engineer') {
+            console.log('hi');
             engineerQuestions();
-        } else if(data.typeEmployee = 'Intern') {
+        } else if(data.typeEmployee === 'Intern') {
             internQuestions();
         } else {
-            return;
+            managerQuestions();
         }
     })
 }
@@ -77,22 +78,22 @@ function engineerQuestions() {
             {
             type: 'text',
             name: 'name',
-            message: "What is your employee's name?"
+            message: "What is your engineer's name?"
             },
             {
             type: 'text',
             name: 'id',
-            message: "What is your employee's employee ID?"
+            message: "What is your engineer's employee ID?"
             },
             {
             type: 'text',
             name: 'email',
-            message: "What is your employee's email address?"
+            message: "What is your engineer's email address?"
             },
             {
             type: 'text',
             name: 'github',
-            message: "What is your employee's GitHub?"
+            message: "What is your engineer's GitHub?"
             },
             {
             type: 'confirm',
@@ -154,6 +155,6 @@ function internQuestions() {
         })
 }
 
-questions();
+managerQuestions();
 
 

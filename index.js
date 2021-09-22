@@ -1,16 +1,6 @@
-const inquirer = require("inquirer");
+const inquirer = require('inquirer');
+const Manager = require('./lib/Manager');
 
-// function startPrompt() {
-//     console.log(`
-//     ==================================================
-//     ==================================================
-//     Answer these questions to build your team profile:
-//     `
-//     )
-//     .then(() => {
-//         getManager()
-//     });
-// }
 function getManager() {
     inquirer  
         .prompt([
@@ -49,13 +39,16 @@ function confirmAdd(managerData) {
     })
     .then(confirmData => {
         if (confirmData.confirmAdd) {
-            addMember(managerData);
+            console.log('need addMember function to run here');
         } else {
-            return;
+            return managerData;
         }
     })
 }
 
-getManager();
+getManager()
+    .then(data => {
+        Manager(data);
+    })
 
-
+mod

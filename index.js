@@ -26,7 +26,7 @@ function getManager() {
             }
         ])
         .then(managerInfo => {
-            console.log(new Manager(managerInfo))
+            console.log(new Manager(managerInfo.name, managerInfo.id, managerInfo.email, managerInfo.office))
         })
 }
 

@@ -43,14 +43,13 @@ function managerQuestions() {
         ])
         .then(function(data) {
            const manager = new Manager(data.name, data.id, data.email, data.office);
-        //    managerArr.push(manager);
            team.push(manager);
            if(data.confirmAdd) {
                chooseEmployee();
-           } else {
-               return team;
-           }
-        })
+            } else {
+                generatePage(team)
+            }
+         })
 }
 
 // choose employee to add. gets ran if user selects add another employee
@@ -105,12 +104,16 @@ function engineerQuestions() {
         ])
         .then(function(data) {
            const engineer = new Engineer(data.name, data.id, data.email, data.github);
-        //    engineerArr.push(engineer);
         team.push(engineer);
         if(data.confirmAdd) {
             chooseEmployee();
         } else {
-            return team;
+            fs.writeFile('./dist/index.html', generatePage(team), function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+                console.log('Success!');
+            })
         }
      })
 }
@@ -148,25 +151,30 @@ function internQuestions() {
         ])
         .then(function(data) {
            const intern = new Intern(data.name, data.id, data.email, data.school);
-        //    internArr.push(intern);
            team.push(intern);
            if(data.confirmAdd) {
                chooseEmployee();
            } else {
-               return team;
+               fs.writeFile('./dist/index.html', generatePage(team), function(err) {
+                   if(err) {
+                       return console.log(err);
+                   }
+                   console.log('Success!');
+               })
            }
         })
 }
 
 managerQuestions()
-    .then(team => {
-        fs.writeFile('./dist/index.html', generatePage(team), function(err) {
-            if(err) {
-                return console.log(err);
-            }
-            console.log('Success!');
-        }) 
-    });
+.then(team => {
+    console.log(team);
+    // fs.writeFile('./dist/index.html', team, function(err) {
+    //     if(err) {
+    //         return console.log(err);
+    //     }
+    //     console.log('Success!');
+    // }) 
+});
     
 
 

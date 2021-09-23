@@ -10,6 +10,14 @@ const fs = require('fs');
 
 
 const team = [];
+//begin app
+function beginQuestions() {
+    console.log(`
+    ===============================================
+    =======Begin building your team profile========
+    ===============================================`);
+    managerQuestions();
+}
 
 //prompt questions about manager 
 function managerQuestions() {
@@ -165,16 +173,16 @@ function internQuestions() {
         })
 }
 
-managerQuestions()
-.then(team => {
-    console.log(team);
-    // fs.writeFile('./dist/index.html', team, function(err) {
-    //     if(err) {
-    //         return console.log(err);
-    //     }
-    //     console.log('Success!');
-    // }) 
-});
+beginQuestions()
+// .then(team => {
+//     console.log(team);
+//     // fs.writeFile('./dist/index.html', team, function(err) {
+//     //     if(err) {
+//     //         return console.log(err);
+//     //     }
+//     //     console.log('Success!');
+//     // }) 
+// });
     
 
 

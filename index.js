@@ -3,6 +3,11 @@ const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern')
+const generatePage = require('./src/page-template');
+const fs = require('fs');
+
+
+
 
 const team = [];
 
@@ -38,11 +43,12 @@ function managerQuestions() {
         ])
         .then(function(data) {
            const manager = new Manager(data.name, data.id, data.email, data.office);
+        //    managerArr.push(manager);
            team.push(manager);
            if(data.confirmAdd) {
                chooseEmployee();
            } else {
-              console.log(team);
+               return team;
            }
         })
 }
@@ -59,14 +65,12 @@ function chooseEmployee() {
     )
     .then(function(data) {
         if(data.typeEmployee === 'Engineer') {
-            console.log('hi');
             engineerQuestions();
         } else {
             internQuestions();
         } 
     })
 }
-
 
 //prompt questions about engineer
 function engineerQuestions() {
@@ -101,13 +105,14 @@ function engineerQuestions() {
         ])
         .then(function(data) {
            const engineer = new Engineer(data.name, data.id, data.email, data.github);
-           team.push(engineer);
-           if(data.confirmAdd) {
-               chooseEmployee();
-           } else {
-              console.log(team);
-           }
-        })
+        //    engineerArr.push(engineer);
+        team.push(engineer);
+        if(data.confirmAdd) {
+            chooseEmployee();
+        } else {
+            return team;
+        }
+     })
 }
 
 //prompt questions about intern
@@ -138,20 +143,30 @@ function internQuestions() {
             type: 'confirm',
             name: 'confirmAdd',
             message: 'Would you like to add another team member?',
-            default: false
+            default: 'false'
             }
         ])
         .then(function(data) {
            const intern = new Intern(data.name, data.id, data.email, data.school);
+        //    internArr.push(intern);
            team.push(intern);
            if(data.confirmAdd) {
                chooseEmployee();
            } else {
-              console.log(team);
+               return team;
            }
         })
 }
 
-managerQuestions();
+managerQuestions()
+    .then(team => {
+        fs.writeFile('./dist/index.html', generatePage(team), function(err) {
+            if(err) {
+                return console.log(err);
+            }
+            console.log('Success!');
+        }) 
+    });
+    
 
 

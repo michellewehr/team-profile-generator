@@ -55,7 +55,8 @@ function managerQuestions() {
            if(data.confirmAdd) {
                chooseEmployee();
             } else {
-                generatePage(team)
+                return team;
+                // generatePage(team);
             }
          })
 }
@@ -116,13 +117,8 @@ function engineerQuestions() {
         if(data.confirmAdd) {
             chooseEmployee();
         } else {
-            fs.writeFile('./dist/index.html', generatePage(team), function(err) {
-                if(err) {
-                    return console.log(err);
-                }
-                console.log('Success!');
-            })
-        }
+            generatePage(team)
+            }
      })
 }
 
@@ -163,26 +159,13 @@ function internQuestions() {
            if(data.confirmAdd) {
                chooseEmployee();
            } else {
-               fs.writeFile('./dist/index.html', generatePage(team), function(err) {
-                   if(err) {
-                       return console.log(err);
-                   }
-                   console.log('Success!');
-               })
+                 generatePage(team);
            }
         })
 }
 
 beginQuestions()
-// .then(team => {
-//     console.log(team);
-//     // fs.writeFile('./dist/index.html', team, function(err) {
-//     //     if(err) {
-//     //         return console.log(err);
-//     //     }
-//     //     console.log('Success!');
-//     // }) 
-// });
-    
+
+
 
 

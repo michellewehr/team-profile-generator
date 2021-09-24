@@ -4,9 +4,7 @@ const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern')
 const createPage = require('./src/page-template');
-const fs = require('fs');
-const { resolve } = require('path');
-
+const emailValidator = require('email-validator');
 
 const team = [];
 
@@ -22,22 +20,46 @@ function managerQuestions() {
             {
             type: 'input',
             name: 'name',
-            message: "What is your team manager's name?"
+            message: "What is your team manager's name?",
+            validate: name => {
+                if (name) {
+                  return true;
+                } else {
+                  console.log("Please enter your manager's name.");
+                  return false;
+                }
+              }
             },
             {
-            type: 'number',
+            type: 'input',
             name: 'id',
             message: "What is your team manager's employee ID?"
             },
             {
             type: 'input',
             name: 'email',
-            message: "What is your team manager's email address?"
+            message: "What is your team manager's email address?",
+            validate: email => {
+                if (emailValidator.validate(email) == true) {
+                    return true;
+                } else {
+                    console.log('Enter a valid email address.');
+                    return false;
+                }
+            }
             },
             {
-            type: 'number',
+            type: 'input',
             name: 'office',
-            message: "What is your team manager's office number?"
+            message: "What is your team manager's office number?",
+            validate: office => {
+                if (office) {
+                  return true;
+                } else {
+                  console.log("Please enter your manager's office number.");
+                  return false;
+                }
+              }
             },
             {
                 type: 'confirm',
@@ -82,28 +104,60 @@ function engineerQuestions() {
             {
             type: 'input',
             name: 'name',
-            message: "What is your engineer's name?"
+            message: "What is your engineer's name?",
+            validate: name => {
+                if (name) {
+                  return true;
+                } else {
+                  console.log("Please enter your engineer's name.");
+                  return false;
+                }
+              }
             },
             {
-            type: 'number',
+            type: 'input',
             name: 'id',
-            message: "What is your engineer's employee ID?"
+            message: "What is your engineer's employee ID?",
+            validate: id => {
+                if (id) {
+                  return true;
+                } else {
+                  console.log("Please enter your engineer's employee ID.");
+                  return false;
+                }
+              }
             },
             {
             type: 'input',
             name: 'email',
-            message: "What is your engineer's email address?"
+            message: "What is your engineer's email address?",
+            validate: email => {
+              if (emailValidator.validate(email) == true) {
+                  return true;
+              } else {
+                  console.log('Enter a valid email address.');
+                  return false;
+              }
+          }
             },
             {
             type: 'input',
             name: 'github',
-            message: "What is your engineer's GitHub?"
+            message: "What is your engineer's GitHub?",
+            validate: github => {
+                if (github) {
+                  return true;
+                } else {
+                  console.log("Please enter your engineer's GitHub username.");
+                  return false;
+                }
+              }
             },
             {
             type: 'confirm',
             name: 'confirmAdd',
             message: 'Would you like to add another team member?',
-            default: false
+            default: 'false'
             }
         ])
         .then(function(data) {
@@ -125,22 +179,54 @@ function internQuestions() {
             {
             type: 'input',
             name: 'name',
-            message: "What is your intern's name?"
+            message: "What is your intern's name?",
+            validate: name => {
+                if (name) {
+                  return true;
+                } else {
+                  console.log("Please enter your intern's name.");
+                  return false;
+                }
+              }
             },
             {
-            type: 'number',
+            type: 'input',
             name: 'id',
-            message: "What is your intern's ID?"
+            message: "What is your intern's ID?",
+            validate: id => {
+                if (id) {
+                  return true;
+                } else {
+                  console.log("Please enter your intern's employee ID.");
+                  return false;
+                }
+              }
             },
             {
             type: 'input',
             name: 'email',
-            message: "What is your intern's email address?"
+            message: "What is your intern's email address?",
+            validate: email => {
+              if (emailValidator.validate(email) == true) {
+                  return true;
+              } else {
+                  console.log('Enter a valid email address.');
+                  return false;
+              }
+          }
             },
             {
             type: 'input',
             name: 'school',
-            message: "What is your intern's school?"
+            message: "What is your intern's school?",
+            validate: school => {
+                if (school) {
+                  return true;
+                } else {
+                  console.log("Please enter your intern's school.");
+                  return false;
+                }
+              }
             },
             {
             type: 'confirm',

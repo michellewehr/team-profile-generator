@@ -24,9 +24,19 @@ function generatePage(team) {
         <title>Team Profile</title>
     </head>
     <body>
+    <header>
+    <div class="heading">
+        <br>
+        <i class="fas fa-users fa-9x"></i>
+        <h1 class=" title is-1 heading-title "> My Team
+        </h1>
+    </div>
+</header>
+    <main>
         <section class="columns is-multiline is-centered">
             ${ writeCards(team) }
         </section>
+    </main>
     </body>
     </html>
   `

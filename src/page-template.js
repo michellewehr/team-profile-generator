@@ -11,23 +11,31 @@ function writeCards(team) {
 }
 
 function generatePage(team) {
-    
-      return `
-    <!DOCTYPE html> 
-    <html lang="en"> 
-
-    <main class="container my-5">
-         ${ writeCards(team) }
-    </main>
-   
-  </body>
-  </html>
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <script src="https://kit.fontawesome.com/a14d8b8912.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../css/styles.css">
+        <title>Team Profile</title>
+    </head>
+    <body>
+        <section class="container columns">
+            ${ writeCards(team) }
+        </section>
+    </body>
+    </html>
   `
 }
 
+
 function createPage(team) {
     console.log(team);
-    fs.writeFile('./index.html', generatePage(team), function(err) {
+    fs.writeFile('./dist/index.html', generatePage(team), function(err) {
         if(err) {
             throw err;
         } else {

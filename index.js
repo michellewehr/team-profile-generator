@@ -66,21 +66,12 @@ function managerQuestions() {
                   return 'Please enter a valid office number';
                 }
               }
-            },
-            {
-                type: 'confirm',
-                name: 'confirmAdd',
-                message: 'Would you like to add another team member?'
             }
         ])
         .then(function(data) {
            const manager = new Manager(data.name, data.id, data.email, data.office);
            team.push(manager);
-           if(data.confirmAdd) {
-               chooseEmployee();
-            } else {
-                createPage(team)
-            }
+           chooseEmployee(team);
          })
          .catch(err => {
           console.log(err);
@@ -88,21 +79,24 @@ function managerQuestions() {
 }
 
 // choose employee to add. gets ran if user selects add another employee
-function chooseEmployee() {
+function chooseEmployee(team) {
     return inquirer
     .prompt(
         {
             type: 'list',
             name: 'typeEmployee',
-            choices: ['Engineer', 'Intern']
+            message: 'What would you like to do next?',
+            choices: ['Add an Engineer', 'Add an Intern', 'Create my team profile!']
         }
     )
     .then(function(data) {
-        if(data.typeEmployee === 'Engineer') {
-            engineerQuestions();
+        if(data.typeEmployee === 'Add an Engineer') {
+            engineerQuestions(team);
+        } else if (data.typeEmployee === 'Add an Intern') {
+            internQuestions(team);
         } else {
-            internQuestions();
-        } 
+          createPage(team);
+        }
     })
     .catch(err => {
       console.log(err);
@@ -110,7 +104,7 @@ function chooseEmployee() {
 }
 
 //prompt questions about engineer
-function engineerQuestions() {
+function engineerQuestions(team) {
     return inquirer  
         .prompt([
             {
@@ -161,22 +155,12 @@ function engineerQuestions() {
                   return "Please enter your engineer's GitHub username.";
                 }
               }
-            },
-            {
-            type: 'confirm',
-            name: 'confirmAdd',
-            message: 'Would you like to add another team member?',
-            default: 'false'
             }
         ])
         .then(function(data) {
         const engineer = new Engineer(data.name, data.id, data.email, data.github);
         team.push(engineer);
-        if(data.confirmAdd) {
-            chooseEmployee();
-        } else {
-            createPage(team)
-            }
+        chooseEmployee(team);
      })
      .catch(err => {
       console.log(err);
@@ -236,22 +220,12 @@ function internQuestions() {
                   return "Please enter your intern's school.";
                 }
               }
-            },
-            {
-            type: 'confirm',
-            name: 'confirmAdd',
-            message: 'Would you like to add another team member?',
-            default: 'false'
             }
         ])
         .then(function(data) {
            const intern = new Intern(data.name, data.id, data.email, data.school);
            team.push(intern);
-           if(data.confirmAdd) {
-               chooseEmployee();
-           } else {
-            createPage(team);
-           }
+           chooseEmployee(team);
         })
         .catch(err => {
           console.log(err);

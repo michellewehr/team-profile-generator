@@ -20,7 +20,7 @@ function generatePage(team) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
         <script src="https://kit.fontawesome.com/a14d8b8912.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../src/css/styles.css">
         <title>Team Profile</title>
     </head>
     <body>
@@ -44,12 +44,11 @@ function generatePage(team) {
 
 
 function createPage(team) {
-    console.log(team);
     fs.writeFile('./dist/index.html', generatePage(team), function(err) {
         if(err) {
             throw err;
         } else {
-            console.log('FINALLY!');
+            console.log('Your team profile was created! Check out your dist directory to see the index.hmtl page!');
         }
     })
 }

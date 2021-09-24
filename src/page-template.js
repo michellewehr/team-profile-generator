@@ -16,22 +16,13 @@ function generatePage(team) {
    team.forEach(member => { 
     
        return member.getCard();
-        // if(member.getRole() === 'Manager') {
-        //     managerArr.push(member);
-        // }
-        // else if(member.getRole() === 'Engineer') {
-        //     engineerArr.push(member);
-        // }
-        // else if(member.getRole() === 'Intern') {
-        //     internArr.push(member);
-        // }
+  
     })
-
-    // console.log(internArr);
-
 }
 
+
 function createPage(team) {
+    console.log(team);
         return `
     <!DOCTYPE html> 
     <html lang="en"> 
@@ -47,4 +38,4 @@ function createPage(team) {
 
 
 
-module.exports = generatePage;
+module.exports = createPage;

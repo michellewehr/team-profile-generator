@@ -3,24 +3,20 @@ const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern')
-const generatePage = require('./src/page-template');
+const createPage = require('./src/page-template');
 const fs = require('fs');
-
-
+const { resolve } = require('path');
 
 
 const team = [];
-//begin app
-function beginQuestions() {
+
+
+//prompt questions about manager 
+function managerQuestions() {
     console.log(`
     ===============================================
     =======Begin building your team profile========
     ===============================================`);
-    managerQuestions();
-}
-
-//prompt questions about manager 
-function managerQuestions() {
     return inquirer  
         .prompt([
             {
@@ -55,8 +51,7 @@ function managerQuestions() {
            if(data.confirmAdd) {
                chooseEmployee();
             } else {
-                return team;
-                // generatePage(team);
+                createPage(team);
             }
          })
 }
@@ -117,7 +112,7 @@ function engineerQuestions() {
         if(data.confirmAdd) {
             chooseEmployee();
         } else {
-            generatePage(team)
+            createPage(team)
             }
      })
 }
@@ -159,13 +154,11 @@ function internQuestions() {
            if(data.confirmAdd) {
                chooseEmployee();
            } else {
-                 generatePage(team);
+            createPage(team);
            }
         })
 }
 
-beginQuestions()
 
-
-
-
+managerQuestions()
+    

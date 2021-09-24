@@ -24,7 +24,7 @@ function generatePage(team) {
         <title>Team Profile</title>
     </head>
     <body>
-        <section class="container columns">
+        <section class="columns">
             ${ writeCards(team) }
         </section>
     </body>

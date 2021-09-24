@@ -82,6 +82,9 @@ function managerQuestions() {
                 createPage(team)
             }
          })
+         .catch(err => {
+          console.log(err);
+      })
 }
 
 // choose employee to add. gets ran if user selects add another employee
@@ -101,6 +104,9 @@ function chooseEmployee() {
             internQuestions();
         } 
     })
+    .catch(err => {
+      console.log(err);
+  })
 }
 
 //prompt questions about engineer
@@ -172,6 +178,9 @@ function engineerQuestions() {
             createPage(team)
             }
      })
+     .catch(err => {
+      console.log(err);
+  })
      
 }
 
@@ -244,6 +253,9 @@ function internQuestions() {
             createPage(team);
            }
         })
+        .catch(err => {
+          console.log(err);
+      })
 }
 
 

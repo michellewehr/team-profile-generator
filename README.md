@@ -27,6 +27,7 @@ The following image is an example team profile that was created with this applic
 - Node.js
 - CSS
 - Bulma
+- HTML
 
 ## This application can be found:
 

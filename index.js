@@ -51,7 +51,7 @@ function managerQuestions() {
            if(data.confirmAdd) {
                chooseEmployee();
             } else {
-                createPage(team);
+                createPage(team)
             }
          })
 }
@@ -107,7 +107,7 @@ function engineerQuestions() {
             }
         ])
         .then(function(data) {
-           const engineer = new Engineer(data.name, data.id, data.email, data.github);
+        const engineer = new Engineer(data.name, data.id, data.email, data.github);
         team.push(engineer);
         if(data.confirmAdd) {
             chooseEmployee();
@@ -115,6 +115,7 @@ function engineerQuestions() {
             createPage(team)
             }
      })
+     
 }
 
 //prompt questions about intern

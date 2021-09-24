@@ -7,33 +7,28 @@ const fs = require('fs')
 //    console.log(team);
 // }
 
-const managerArr = [];
-const engineerArr = [];
-const internArr = [];
 
-function generatePage(team) {
-    console.log(team);
-   team.forEach(member => { 
-    
-       return member.getCard();
-  
-    })
-}
+
+// function generatePage(team) {
+//       const file = `
+//     <!DOCTYPE html> 
+//     <html lang="en"> 
+
+//     <main class="container my-5">
+//          ${ generatePage(team) }
+//     </main>
+   
+//   </body>
+//   </html>
+//   `
+//   console.log(file);
+//   }
 
 
 function createPage(team) {
-    console.log(team);
-        return `
-    <!DOCTYPE html> 
-    <html lang="en"> 
-
-    <main class="container my-5">
-         ${ generatePage(team) }
-    </main>
-   
-  </body>
-  </html>
-  `
+    team.forEach(member => {
+       console.log(member.getCard());
+    })
 }
 
 

@@ -4,13 +4,14 @@ const Intern = require('../lib/Intern');
 const fs = require('fs')
 
 function writeCards(team) {
-   team.forEach(member => {
-    return member.getCard();
-})
+    const cards = team.map(member => {
+        return member.getCard();
+    });
+    return cards.join("\n")
 }
 
-
 function generatePage(team) {
+    
       return `
     <!DOCTYPE html> 
     <html lang="en"> 

@@ -3,6 +3,7 @@ const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
 const fs = require('fs')
 
+//this will return each members getCard() methods defined in the engineer, manager, and intern objects and will be used in the generatePage function below
 function writeCards(team) {
     const cards = team.map(member => {
         return member.getCard();
@@ -10,6 +11,7 @@ function writeCards(team) {
     return cards.join("\n")
 }
 
+//this function will be ran as the file content in the createPage funciton below to write the file
 function generatePage(team) {
     return `
     <!DOCTYPE html>
@@ -42,7 +44,7 @@ function generatePage(team) {
   `
 }
 
-
+//this is the function that takes the team array from the index.js and runs to write a file with the file content being what the generate page function returns above
 function createPage(team) {
     fs.writeFile('./dist/index.html', generatePage(team), function(err) {
         if(err) {
@@ -53,5 +55,5 @@ function createPage(team) {
     })
 }
 
-
+//export this module
 module.exports = createPage;

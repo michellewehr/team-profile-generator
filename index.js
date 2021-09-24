@@ -20,22 +20,22 @@ function managerQuestions() {
     return inquirer  
         .prompt([
             {
-            type: 'text',
+            type: 'input',
             name: 'name',
             message: "What is your team manager's name?"
             },
             {
-            type: 'text',
+            type: 'number',
             name: 'id',
             message: "What is your team manager's employee ID?"
             },
             {
-            type: 'text',
+            type: 'input',
             name: 'email',
             message: "What is your team manager's email address?"
             },
             {
-            type: 'text',
+            type: 'number',
             name: 'office',
             message: "What is your team manager's office number?"
             },
@@ -80,22 +80,22 @@ function engineerQuestions() {
     return inquirer  
         .prompt([
             {
-            type: 'text',
+            type: 'input',
             name: 'name',
             message: "What is your engineer's name?"
             },
             {
-            type: 'text',
+            type: 'number',
             name: 'id',
             message: "What is your engineer's employee ID?"
             },
             {
-            type: 'text',
+            type: 'input',
             name: 'email',
             message: "What is your engineer's email address?"
             },
             {
-            type: 'text',
+            type: 'input',
             name: 'github',
             message: "What is your engineer's GitHub?"
             },
@@ -123,22 +123,22 @@ function internQuestions() {
     return inquirer  
         .prompt([
             {
-            type: 'text',
+            type: 'input',
             name: 'name',
             message: "What is your intern's name?"
             },
             {
-            type: 'text',
+            type: 'number',
             name: 'id',
             message: "What is your intern's ID?"
             },
             {
-            type: 'text',
+            type: 'input',
             name: 'email',
             message: "What is your intern's email address?"
             },
             {
-            type: 'text',
+            type: 'input',
             name: 'school',
             message: "What is your intern's school?"
             },

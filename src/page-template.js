@@ -11,7 +11,7 @@ function writeCards(team) {
 
 
 function generatePage(team) {
-      const file = `
+      return `
     <!DOCTYPE html> 
     <html lang="en"> 
 

@@ -1,15 +1,14 @@
 const inquirer = require('inquirer');
-const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern')
 const createPage = require('./src/page-template');
 const emailValidator = require('email-validator');
 
+//create an empty array to push new Employees to
 const team = [];
 
-
-//prompt questions about manager 
+//begin application prompts/ prompt questions about manager 
 function managerQuestions() {
     console.log(`
     ===============================================
@@ -68,6 +67,7 @@ function managerQuestions() {
               }
             }
         ])
+        //create a new manager object and push it to team array. Then run the choose Employee prompt
         .then(function(data) {
            const manager = new Manager(data.name, data.id, data.email, data.office);
            team.push(manager);
@@ -78,7 +78,7 @@ function managerQuestions() {
       })
 }
 
-// choose employee to add. gets ran if user selects add another employee
+// choose employee to add or to stop the prompts and create the team profile
 function chooseEmployee(team) {
     return inquirer
     .prompt(
@@ -157,6 +157,7 @@ function engineerQuestions(team) {
               }
             }
         ])
+        //create a new Engineer object and push it to team array. Then run the choose Employee prompt
         .then(function(data) {
         const engineer = new Engineer(data.name, data.id, data.email, data.github);
         team.push(engineer);
@@ -222,6 +223,7 @@ function internQuestions() {
               }
             }
         ])
+        //create a new Intern object and push it to team array. Then run the choose Employee prompt
         .then(function(data) {
            const intern = new Intern(data.name, data.id, data.email, data.school);
            team.push(intern);
@@ -232,6 +234,6 @@ function internQuestions() {
       })
 }
 
-
+//initiate the application
 managerQuestions()
     

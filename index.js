@@ -25,15 +25,22 @@ function managerQuestions() {
                 if (name) {
                   return true;
                 } else {
-                  console.log("Please enter your manager's name.");
-                  return false;
+                  return "Please enter your manager's name.";
                 }
               }
             },
             {
             type: 'input',
             name: 'id',
-            message: "What is your team manager's employee ID?"
+            message: "What is your team manager's employee ID?",
+            validate: id => {
+              const pass = !isNaN(id);
+              if (id && pass) {
+                return true;
+              } else {
+                return 'Please enter a valid employee ID';
+              }
+            }
             },
             {
             type: 'input',
@@ -43,8 +50,7 @@ function managerQuestions() {
                 if (emailValidator.validate(email) == true) {
                     return true;
                 } else {
-                    console.log('Enter a valid email address.');
-                    return false;
+                    return 'Enter a valid email address.';
                 }
             }
             },
@@ -53,11 +59,11 @@ function managerQuestions() {
             name: 'office',
             message: "What is your team manager's office number?",
             validate: office => {
-                if (office) {
+                const pass = !isNaN(office)
+                if (office && pass) {
                   return true;
                 } else {
-                  console.log("Please enter your manager's office number.");
-                  return false;
+                  return 'Please enter a valid office number';
                 }
               }
             },
@@ -109,8 +115,7 @@ function engineerQuestions() {
                 if (name) {
                   return true;
                 } else {
-                  console.log("Please enter your engineer's name.");
-                  return false;
+                  return "Please enter your engineer's name.";
                 }
               }
             },
@@ -119,13 +124,13 @@ function engineerQuestions() {
             name: 'id',
             message: "What is your engineer's employee ID?",
             validate: id => {
-                if (id) {
-                  return true;
-                } else {
-                  console.log("Please enter your engineer's employee ID.");
-                  return false;
-                }
+              const pass = !isNaN(id)
+              if (id && pass) {
+                return true;
+              } else {
+                return 'Please enter a valid employee ID';
               }
+            }
             },
             {
             type: 'input',
@@ -135,8 +140,7 @@ function engineerQuestions() {
               if (emailValidator.validate(email) == true) {
                   return true;
               } else {
-                  console.log('Enter a valid email address.');
-                  return false;
+                 return 'Enter a valid email address.';
               }
           }
             },
@@ -148,8 +152,7 @@ function engineerQuestions() {
                 if (github) {
                   return true;
                 } else {
-                  console.log("Please enter your engineer's GitHub username.");
-                  return false;
+                  return "Please enter your engineer's GitHub username.";
                 }
               }
             },
@@ -184,8 +187,7 @@ function internQuestions() {
                 if (name) {
                   return true;
                 } else {
-                  console.log("Please enter your intern's name.");
-                  return false;
+                  return "Please enter your intern's name.";
                 }
               }
             },
@@ -194,13 +196,13 @@ function internQuestions() {
             name: 'id',
             message: "What is your intern's ID?",
             validate: id => {
-                if (id) {
-                  return true;
-                } else {
-                  console.log("Please enter your intern's employee ID.");
-                  return false;
-                }
+              const pass = !isNaN(id)
+              if (id && pass) {
+                return true;
+              } else {
+                return 'Please enter a valid employee ID';
               }
+            }
             },
             {
             type: 'input',
@@ -210,8 +212,7 @@ function internQuestions() {
               if (emailValidator.validate(email) == true) {
                   return true;
               } else {
-                  console.log('Enter a valid email address.');
-                  return false;
+                  return 'Enter a valid email address.';
               }
           }
             },
@@ -223,8 +224,7 @@ function internQuestions() {
                 if (school) {
                   return true;
                 } else {
-                  console.log("Please enter your intern's school.");
-                  return false;
+                  return "Please enter your intern's school.";
                 }
               }
             },

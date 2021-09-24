@@ -22,13 +22,13 @@ function generatePage(team) {
   </body>
   </html>
   `
-  }
+
 
 function createPage(team) {
     console.log(team);
-    fs.writeFile('../dist/index.html', generatePage(team), function(err) {
+    fs.writeFile('./index.html', generatePage(team), function(err) {
         if(err) {
-            console.log('ERROR');
+            throw err;
         } else {
             console.log('FINALLY!');
         }

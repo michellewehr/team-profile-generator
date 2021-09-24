@@ -22,7 +22,7 @@ function generatePage(team) {
   </body>
   </html>
   `
-
+}
 
 function createPage(team) {
     console.log(team);
